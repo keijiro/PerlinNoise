@@ -1,5 +1,15 @@
 #pragma strict
 
+//
+// Perlin Noise and fBm functions for Unity
+// https://github.com/keijiro/unity-perlin
+//
+// Based on the original implementation by Ken Perlin
+// http://mrl.nyu.edu/~perlin/noise/
+//
+// Feel free to use this code in your projects.
+//
+
 static class Perlin {
     function Noise(x : float) {
         var X : byte = Mathf.FloorToInt(x);
