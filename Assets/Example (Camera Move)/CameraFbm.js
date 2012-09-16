@@ -13,6 +13,9 @@ private var frequencyScale = 1.0;
 private var amountScale = 1.0;
 
 function Update() {
+	positionTime += Time.deltaTime * positionFrequency * frequencyScale;
+	rotationTime += Time.deltaTime * rotationFrequency * frequencyScale;
+
 	var dx = Perlin.Fbm(positionTime, octave);
 	var dy = Perlin.Fbm(positionTime + 10, octave);
 	var dz = Perlin.Fbm(positionTime + 20, octave);
@@ -23,12 +26,9 @@ function Update() {
 	transform.localRotation =
 		Quaternion.AngleAxis(rx * rotationAmount * amountScale, Vector3.right) *
 		Quaternion.AngleAxis(ry * rotationAmount * amountScale, Vector3.up);
-
-	positionTime += Time.deltaTime * positionFrequency * frequencyScale;
-	rotationTime += Time.deltaTime * rotationFrequency * frequencyScale;
 }
 
 function OnGUI() {
-	frequencyScale = GUI.HorizontalSlider(Rect(10, 10, 200, 32), frequencyScale, 0.0, 2.0);
-	amountScale = GUI.HorizontalSlider(Rect(10, 50, 200, 32), amountScale, 0.0, 2.0);
+	frequencyScale = GUI.HorizontalSlider(Rect(10, 30, 200, 32), frequencyScale, 0.0, 2.0);
+	amountScale = GUI.HorizontalSlider(Rect(10, 60, 200, 32), amountScale, 0.0, 2.0);
 }
