@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 //
 // Perlin Noise and fBm functions for Unity
