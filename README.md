@@ -1,9 +1,7 @@
 unity-perlin
 ============
 
-This is an C# based implementation of the Perlin noise function and
-the fBm (fractional Brownian motion) function for Unity.
+This is a C# implementation of a Perlin noise function and
+an fBm (fractional Brownian motion) function for Unity.
 
-There are three variations: 1D, 2D and 3D.
-
-You can use this in your project freely.
+You may use this in your projects freely.
