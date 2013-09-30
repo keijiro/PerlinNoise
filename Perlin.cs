@@ -1,7 +1,8 @@
 using UnityEngine;
 
 //
-// Perlin Noise and fBm functions for Unity
+// A Perlin noise class for Unity
+// By Keijiro Takahashi, 2013
 // https://github.com/keijiro/unity-perlin
 //
 // Based on the original implementation by Ken Perlin
@@ -10,6 +11,7 @@ using UnityEngine;
 
 public static class Perlin
 {
+	#region Noise functions
     public static float Noise (float x)
     {
         var X = Mathf.FloorToInt (x) & 0xff;
@@ -53,7 +55,9 @@ public static class Perlin
                         Lerp (v, Lerp (u, Grad (AA + 1, x    , y    , z - 1), Grad (BA + 1, x - 1, y    , z - 1)),
                                  Lerp (u, Grad (AB + 1, x    , y - 1, z - 1), Grad (BB + 1, x - 1, y - 1, z - 1))));
     }
+	#endregion
 
+	#region fBm functions
     public static float Fbm (float x, int octave)
     {
         var f = 0.0f;
@@ -89,7 +93,9 @@ public static class Perlin
         }
         return f;
     }
+	#endregion
 
+	#region Private functions
     static float Fade (float t)
     {
         return t * t * t * (t * (t * 6 - 15) + 10);
@@ -135,4 +141,5 @@ public static class Perlin
         138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180,
         151
     };
+	#endregion
 }
