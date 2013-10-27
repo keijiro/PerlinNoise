@@ -19,12 +19,12 @@ public static class Perlin
         return Lerp (Fade (x), Grad(X, x), Grad (X + 1, x - 1));
     }
 
-    public static float Noise (Vector2 coord)
+    public static float Noise (float x, float y)
     {
-        var X = Mathf.FloorToInt (coord.x) & 0xff;
-        var Y = Mathf.FloorToInt (coord.y) & 0xff;
-        var x = coord.x - Mathf.Floor (coord.x);
-        var y = coord.y - Mathf.Floor (coord.y);
+        var X = Mathf.FloorToInt (x) & 0xff;
+        var Y = Mathf.FloorToInt (y) & 0xff;
+        x -= Mathf.Floor (x);
+        y -= Mathf.Floor (y);
         var u = Fade (x);
         var v = Fade (y);
         var A = (perm [X    ] + Y) & 0xff;
@@ -33,14 +33,19 @@ public static class Perlin
                         Lerp (u, Grad (A + 1, x, y - 1), Grad (B + 1, x - 1, y - 1)));
     }
 
-    public static float Noise (Vector3 coord)
+    public static float Noise (Vector2 coord)
     {
-        var X = Mathf.FloorToInt (coord.x) & 0xff;
-        var Y = Mathf.FloorToInt (coord.y) & 0xff;
-        var Z = Mathf.FloorToInt (coord.z) & 0xff;
-        var x = coord.x - Mathf.Floor (coord.x);
-        var y = coord.y - Mathf.Floor (coord.y);
-        var z = coord.z - Mathf.Floor (coord.z);
+        return Noise (coord.x, coord.y);
+    }
+
+    public static float Noise (float x, float y, float z)
+    {
+        var X = Mathf.FloorToInt (x) & 0xff;
+        var Y = Mathf.FloorToInt (y) & 0xff;
+        var Z = Mathf.FloorToInt (z) & 0xff;
+        x -= Mathf.Floor (x);
+        y -= Mathf.Floor (y);
+        z -= Mathf.Floor (z);
         var u = Fade (x);
         var v = Fade (y);
         var w = Fade (z);
@@ -54,6 +59,11 @@ public static class Perlin
                                  Lerp (u, Grad (AB    , x    , y - 1, z    ), Grad (BB    , x - 1, y - 1, z    ))),
                         Lerp (v, Lerp (u, Grad (AA + 1, x    , y    , z - 1), Grad (BA + 1, x - 1, y    , z - 1)),
                                  Lerp (u, Grad (AB + 1, x    , y - 1, z - 1), Grad (BB + 1, x - 1, y - 1, z - 1))));
+    }
+
+    public static float Noise (Vector3 coord)
+    {
+        return Noise (coord.x, coord.y, coord.z);
     }
     #endregion
 
