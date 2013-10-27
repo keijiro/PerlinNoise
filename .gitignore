@@ -1,0 +1,12 @@
+.DS_Store
+Library
+Temp
+*.apk
+*.csproj
+*.pidb
+*.sln
+*.suo
+*.unityproj
+*.userprefs
+*.exe
+*_Data
