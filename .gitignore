@@ -3,21 +3,7 @@ Library
 Temp
 *.pidb
 *.userprefs
-
-# Xcode
-xcuserdata
-xcshareddata
-*.pbxuser
-
-# Visual Studio
-Debug/
-Release/
-x64/
-x86/
-build/
-ipch/
-*.sdf
-.vs
+ProjectVersion.txt
 
 # Misc
 *.swp
