@@ -75,6 +75,11 @@ public static class Perlin
         return f;
     }
 
+    public static float Fbm(float x, float y, int octave)
+    {
+        return Fbm(new Vector2(x, y), octave);
+    }
+
     public static float Fbm(Vector3 coord, int octave)
     {
         var f = 0.0f;
@@ -85,6 +90,11 @@ public static class Perlin
             w *= 0.5f;
         }
         return f;
+    }
+
+    public static float Fbm(float x, float y, float z, int octave)
+    {
+        return Fbm(new Vector3(x, y, z), octave);
     }
 
     #endregion
