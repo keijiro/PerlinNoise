@@ -1,7 +1,6 @@
-unity-perlin
-============
+Perlin noise generator for Unity
+--------------------------------
 
-This is a C# implementation of a Perlin noise function and
-an fBm (fractional Brownian motion) function for Unity.
+This is a straight implementation of the Perlin noise generator for Unity.
 
-You may use this in your projects freely.
+You may use the script (Perlin.cs) in your projects freely.
