@@ -12,6 +12,14 @@ public static class Perlin
 {
     #region Noise functions
 
+    public static float Noise(float x)
+    {
+        var X = Mathf.FloorToInt(x) & 0xff;
+        x -= Mathf.Floor(x);
+        var u = Fade(x);
+        return Lerp(u, Grad(perm[X], x), Grad(perm[X+1], x-1)) * 2;
+    }
+
     public static float Noise(float x, float y)
     {
         var X = Mathf.FloorToInt(x) & 0xff;
@@ -63,6 +71,18 @@ public static class Perlin
 
     #region fBm functions
 
+    public static float Fbm(float x, int octave)
+    {
+        var f = 0.0f;
+        var w = 0.5f;
+        for (var i = 0; i < octave; i++) {
+            f += w * Noise(x);
+            x *= 2.0f;
+            w *= 0.5f;
+        }
+        return f;
+    }
+
     public static float Fbm(Vector2 coord, int octave)
     {
         var f = 0.0f;
@@ -109,6 +129,11 @@ public static class Perlin
     static float Lerp(float t, float a, float b)
     {
         return a + t * (b - a);
+    }
+
+    static float Grad(int hash, float x)
+    {
+        return (hash & 1) == 0 ? x : -x;
     }
 
     static float Grad(int hash, float x, float y)
