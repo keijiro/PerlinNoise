@@ -14,4 +14,5 @@ Tips
 The value range of the noise functions is [-1.0, +1.0].
 
 AFAIK, the value range of the fBm functions is not well-defined. It might be
-somewhere around 0.75. Please let me know if you have the exact solution :wink:
+somewhere around [-0.75, +0.75]. Please let me know if you have the exact
+solution :wink:
